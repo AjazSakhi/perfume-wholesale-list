@@ -118,8 +118,8 @@
             <thead>
                 <tr>
                     <th>Product Name</th>
-                    <th>Size</th>
-                    <th>Price</th>
+                    <th>Code</th>
+                    <th>Quantity</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
@@ -190,7 +190,7 @@
             row.innerHTML = `
                 <td><strong>${item.name}</strong></td>
                 <td>${item.size}</td>
-                <td class="price-tag">₹${item.price}</td>
+                <td class="price-tag">${item.price}</td>
             `;
             tbody.appendChild(row);
         });
