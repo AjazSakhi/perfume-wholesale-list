@@ -1,193 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQKVD4TWJC"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-HQKVD4TWJC');
-    </script>
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaliya Perfume Price Finder</title>
+    <title>Wholesale Inventory - Aaliya Luxury Perfume</title>
     <style>
-        :root { 
-            --primary: #27ae60; 
-            --wa-green: #25D366; 
-            --bg: #f0f2f5; 
+        :root {
+            --primary: #1e3a8a;
+            --accent: #b45309;
+            --bg: #f8fafc;
+            --text: #0f172a;
         }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: var(--bg); 
-            padding: 20px; 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
+            padding: 20px;
         }
-        .box { 
-            max-width: 450px; 
-            margin: 20px auto; 
-            background: white; 
-            padding: 25px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
-        h2 { color: #1a1a1a; margin-top: 0; margin-bottom: 20px; text-align: center; }
-
-        .search-container { position: relative; width: 100%; margin-bottom: 20px; }
-
-        #search { 
-            width: 100%; 
-            padding: 15px 45px 15px 15px; 
-            border: 2px solid #eee; 
-            border-radius: 10px; 
-            font-size: 16px; 
-            outline: none; 
-            transition: 0.3s;
-            box-sizing: border-box; 
+        .header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
         }
-        #search:focus { border-color: var(--primary); }
-
-        .clear-btn {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #ccc;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            line-height: 18px;
-            cursor: pointer;
-            font-weight: bold;
-            display: none; 
-            font-size: 12px;
-            user-select: none;
+        h1 { color: var(--primary); margin: 0 0 5px 0; font-size: 28px; letter-spacing: -0.5px; }
+        .subtitle { color: #64748b; font-size: 14px; margin: 0; }
+        .notice-banner {
+            background-color: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #78350f;
         }
-
-        .item { 
-            display: none; 
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 12px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
             text-align: left;
-            flex-direction: column;
-            gap: 10px;
-            transition: transform 0.2s;
+            margin-top: 15px;
         }
-        .item:hover { transform: translateY(-2px); border-color: #ddd; }
-        
-        .info-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .name { font-weight: 600; color: #333; font-size: 1.05em; }
-        .price { font-weight: bold; color: var(--primary); font-size: 1.1em; }
-        
-        .wa-btn {
-            background-color: var(--wa-green);
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        .status {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .instock { background-color: #dcfce7; color: #15803d; }
+        .lowstock { background-color: #ffedd5; color: #c2410c; }
+        .outstock { background-color: #fee2e2; color: #b91c1c; }
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--primary);
             color: white;
             text-decoration: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            display: block;
-            text-align: center;
-            transition: background 0.3s;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 20px;
         }
-        .wa-btn:hover { background-color: #1eb954; }
-        
-        .show { display: flex !important; }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h2>Aaliya Luxury Perfume</h2>
-    
-    <div class="search-container">
-        <input type="text" id="search" placeholder="Enter perfume name..." onkeyup="filter()">
-        <span class="clear-btn" id="clearBtn" onclick="clearSearch()">&times;</span>
+<div class="container">
+    <div class="header">
+        <h1>AALIYA LUXURY PERFUME</h1>
+        <p class="subtitle">Live Wholesale Inventory & Pricing Matrix</p>
     </div>
-    
-    <div id="list">Fetching live prices from Aaliya Luxury Perfume.</div>
+
+    <div class="notice-banner">
+        <strong>🔒 Restricted Access:</strong> Prices are strictly confidential for registered resellers. Call <strong>+91 9722008882</strong> to submit business verification and unlock live ordering.
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Fragrance Name</th>
+                <th>Concentration</th>
+                <th>Size</th>
+                <th>Wholesale Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Afnan</strong></td>
+                <td>9 AM Dive</td>
+                <td>EDP</td>
+                <td>100ml</td>
+                <td>₹2,450</td>
+                <td><span class="status instock">In Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>Lattafa</strong></td>
+                <td>Khamrah</td>
+                <td>EDP</td>
+                <td>100ml</td>
+                <td>₹2,100</td>
+                <td><span class="status instock">In Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>Rasasi</strong></td>
+                <td>Hawas for Him</td>
+                <td>EDP</td>
+                <td>100ml</td>
+                <td>₹3,900</td>
+                <td><span class="status lowstock">Low Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>Armaf</strong></td>
+                <td>Club de Nuit Milestone</td>
+                <td>EDP</td>
+                <td>105ml</td>
+                <td>₹2,950</td>
+                <td><span class="status outstock">Out of Stock</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="tel:9722008882" class="contact-btn">📞 Call Wholesale Department to Order</a>
 </div>
-
-<script>
-    const yourWhatsAppNumber = "919722999223"; 
-    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTzSeE0tPryPKE8gOSPKUhSxupwT-v85JTQLklrg8dXAAcQ4qbAW_iCV7Krjgs5LoH0QKP3qyqIsgj-/pub?output=csv';
-
-    let searchTimer;
-
-    // 1. Fetch data from Google Sheets
-    fetch(sheetUrl)
-        .then(res => res.text())
-        .then(csvText => {
-            const rows = csvText.split('\n').slice(1);
-            const listDiv = document.getElementById('list');
-            listDiv.innerHTML = ''; 
-
-            rows.forEach(row => {
-                const cols = row.split(',');
-                if (cols.length >= 2) {
-                    const name = cols[0].trim();
-                    const price = cols[1].trim();
-                    
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'item';
-                    
-                    const message = encodeURIComponent(`please send payment option for my perfume ${name} and ${price}.`);
-                    const waLink = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
-
-                    itemDiv.innerHTML = `
-                        <div class="info-row">
-                            <span class="name">${name}</span>
-                            <span class="price">₹${price}</span>
-                        </div>
-                        <a href="${waLink}" class="wa-btn" target="_blank">WhatsApp 97 22 999 22 3 for the best price.</a>
-                    `;
-                    listDiv.appendChild(itemDiv);
-                }
-            });
-        });
-
-    // 2. Filter logic with Analytics Tracking
-    function filter() {
-        let input = document.getElementById('search').value.toLowerCase().trim();
-        let items = document.getElementsByClassName('item');
-        let clearBtn = document.getElementById('clearBtn');
-
-        clearBtn.style.display = (input.length > 0) ? "block" : "none";
-
-        // ANALYTICS: Track what people search for after 1 second of no typing
-        clearTimeout(searchTimer);
-        if (input.length >= 3) {
-            searchTimer = setTimeout(() => {
-                gtag('event', 'search_perfume', {
-                    'search_term': input
-                });
-            }, 1000);
-        }
-        
-        for (let i = 0; i < items.length; i++) {
-            let text = items[i].innerText.toLowerCase();
-            if (input !== "" && text.includes(input)) {
-                items[i].classList.add('show');
-            } else {
-                items[i].classList.remove('show');
-            }
-        }
-    }
-
-    // 3. Clear Search Function
-    function clearSearch() {
-        document.getElementById('search').value = "";
-        filter();
-        document.getElementById('search').focus();
-    }
-</script>
 
 </body>
 </html>
