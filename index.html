@@ -117,7 +117,7 @@
 
 <script>
     const yourWhatsAppNumber = "919722999223"; 
-    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMHrfuuQagZQNnWLcrzEWzzMijnAXb67UmFbCgShPiafkyrr_qf5s8I59p4iWhHVdxWgSJg2eYW6Tg/pubhtml?gid=0&single=true';
+    const sheetUrl = '    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMHrfuuQagZQNnWLcrzEWzzMijnAXb67UmFbCgShPiafkyrr_qf5s8I59p4iWhHVdxWgSJg2eYW6Tg/pub?gid=0&single=true&output=csv';';
 
     let searchTimer;
 
@@ -138,13 +138,13 @@
                     const itemDiv = document.createElement('div');
                     itemDiv.className = 'item';
                     
-                    const message = encodeURIComponent(`please send payment option for my perfume ${name} and ${quantity}.`);
+                    const message = encodeURIComponent(`please send payment option for my perfume ${name} and ${price}.`);
                     const waLink = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
 
                     itemDiv.innerHTML = `
                         <div class="info-row">
                             <span class="name">${name}</span>
-                            <span class="quantity">₹${quantity}</span>
+                            <span class="price">₹${price}</span>
                         </div>
                         <a href="${waLink}" class="wa-btn" target="_blank">WhatsApp 97 22 999 22 3 for the best price.</a>
                     `;
