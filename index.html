@@ -1,220 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQKVD4TWJC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HQKVD4TWJC');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wholesale Stock List</title>
+    <title>Aaliya Perfume Price Finder</title>
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --success-color: #27ae60;
-            --warning-color: #e67e22;
-            --danger-color: #c0392b;
+        :root { 
+            --primary: #27ae60; 
+            --wa-green: #25D366; 
+            --bg: #f0f2f5; 
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--bg); 
+            padding: 20px; 
             margin: 0;
-            padding: 20px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .box { 
+            max-width: 450px; 
+            margin: 20px auto; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
+        h2 { color: #1a1a1a; margin-top: 0; margin-bottom: 20px; text-align: center; }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #eceff1;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+        .search-container { position: relative; width: 100%; margin-bottom: 20px; }
+
+        #search { 
+            width: 100%; 
+            padding: 15px 45px 15px 15px; 
+            border: 2px solid #eee; 
+            border-radius: 10px; 
+            font-size: 16px; 
+            outline: none; 
+            transition: 0.3s;
+            box-sizing: border-box; 
         }
+        #search:focus { border-color: var(--primary); }
 
-        .header h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 28px;
-        }
-
-        .meta-info {
-            text-align: right;
-            font-size: 0.9rem;
-            color: #7f8c8d;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        th {
-            background-color: var(--primary-color);
+        .clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ccc;
             color: white;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
-
-        tr:hover {
-            background-color: #f1f2f6;
-        }
-
-        /* Status Badges */
-        .badge {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
             font-weight: bold;
-            display: inline-block;
+            display: none; 
+            font-size: 12px;
+            user-select: none;
         }
 
-        .instock { background-color: #d4edda; color: var(--success-color); }
-        .lowstock { background-color: #fff3cd; color: var(--warning-color); }
-        .outofstock { background-color: #f8d7da; color: var(--danger-color); }
-
-        .price {
-            font-family: monospace;
-            font-size: 1rem;
-            font-weight: 600;
+        .item { 
+            display: none; 
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            text-align: left;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.2s;
         }
-
-        /* Responsive design for smaller screens */
-        @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            tr {
-                border: 1px solid #ccc;
-                margin-bottom: 10px;
-                border-radius: 4px;
-                padding: 10px;
-            }
-            td {
-                border: none;
-                border-bottom: 1px solid #eee;
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-            }
-            td:before {
-                position: absolute;
-                left: 10px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-            }
-            /* Label the data for mobile view */
-            td:nth-of-type(1):before { content: "SKU"; }
-            td:nth-of-type(2):before { content: "Product Name"; }
-            td:nth-of-type(3):before { content: "Category"; }
-            td:nth-of-type(4):before { content: "Wholesale Price"; }
-            td:nth-of-type(5):before { content: "MOQ"; }
-            td:nth-of-type(6):before { content: "Stock Qty"; }
-            td:nth-of-type(7):before { content: "Status"; }
+        .item:hover { transform: translateY(-2px); border-color: #ddd; }
+        
+        .info-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .name { font-weight: 600; color: #333; font-size: 1.05em; }
+        .price { font-weight: bold; color: var(--primary); font-size: 1.1em; }
+        
+        .wa-btn {
+            background-color: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            transition: background 0.3s;
         }
+        .wa-btn:hover { background-color: #1eb954; }
+        
+        .show { display: flex !important; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <div>
-            <h1>Wholesale Stock Master List</h1>
-            <p style="margin: 5px 0 0 0; color: #7f8c8d;">Bulk Pricing & Inventory Availability</p>
-        </div>
-        <div class="meta-info">
-            <p><strong>Last Updated:</strong> July 2026</p>
-            <p><strong>Min. Order Value:</strong> $500.00</p>
-        </div>
+<div class="box">
+    <h2>Aaliya Luxury Perfume</h2>
+    
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Enter perfume name..." onkeyup="filter()">
+        <span class="clear-btn" id="clearBtn" onclick="clearSearch()">&times;</span>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>SKU</th>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Wholesale Price</th>
-                <th>MOQ (Units)</th>
-                <th>Stock Qty</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>APP-101</strong></td>
-                <td>Premium Wireless Earbuds v2</td>
-                <td>Electronics</td>
-                <td class="price">$24.50</td>
-                <td>20</td>
-                <td>1,240</td>
-                <td><span class="badge instock">In Stock</span></td>
-            </tr>
-            <tr>
-                <td><strong>APP-102</strong></td>
-                <td>Ergonomic Office Chair</td>
-                <td>Furniture</td>
-                <td class="price">$85.00</td>
-                <td>5</td>
-                <td>42</td>
-                <td><span class="badge lowstock">Low Stock</span></td>
-            </tr>
-            <tr>
-                <td><strong>APP-103</strong></td>
-                <td>Stainless Steel Water Bottle (1L)</td>
-                <td>Home & Kitchen</td>
-                <td class="price">$6.20</td>
-                <td>50</td>
-                <td>0</td>
-                <td><span class="badge outofstock">Out of Stock</span></td>
-            </tr>
-            <tr>
-                <td><strong>APP-104</strong></td>
-                <td>Ultra-Wide Gaming Monitor 34"</td>
-                <td>Electronics</td>
-                <td class="price">$199.00</td>
-                <td>10</td>
-                <td>310</td>
-                <td><span class="badge instock">In Stock</span></td>
-            </tr>
-            <tr>
-                <td><strong>APP-105</strong></td>
-                <td>Organic Cotton Hoodies (Assorted)</td>
-                <td>Apparel</td>
-                <td class="price">$14.10</td>
-                <td>30</td>
-                <td>15</td>
-                <td><span class="badge lowstock">Low Stock</span></td>
-            </tr>
-        </tbody>
-    </table>
+    
+    <div id="list">Fetching live prices from Aaliya Luxury Perfume.</div>
 </div>
+
+<script>
+    const yourWhatsAppNumber = "919722999223"; 
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTzSeE0tPryPKE8gOSPKUhSxupwT-v85JTQLklrg8dXAAcQ4qbAW_iCV7Krjgs5LoH0QKP3qyqIsgj-/pub?output=csv';
+
+    let searchTimer;
+
+    // 1. Fetch data from Google Sheets
+    fetch(sheetUrl)
+        .then(res => res.text())
+        .then(csvText => {
+            const rows = csvText.split('\n').slice(1);
+            const listDiv = document.getElementById('list');
+            listDiv.innerHTML = ''; 
+
+            rows.forEach(row => {
+                const cols = row.split(',');
+                if (cols.length >= 2) {
+                    const name = cols[0].trim();
+                    const price = cols[1].trim();
+                    
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    
+                    const message = encodeURIComponent(`please send payment option for my perfume ${name} and ${price}.`);
+                    const waLink = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
+
+                    itemDiv.innerHTML = `
+                        <div class="info-row">
+                            <span class="name">${name}</span>
+                            <span class="price">₹${price}</span>
+                        </div>
+                        <a href="${waLink}" class="wa-btn" target="_blank">WhatsApp 97 22 999 22 3 for the best price.</a>
+                    `;
+                    listDiv.appendChild(itemDiv);
+                }
+            });
+        });
+
+    // 2. Filter logic with Analytics Tracking
+    function filter() {
+        let input = document.getElementById('search').value.toLowerCase().trim();
+        let items = document.getElementsByClassName('item');
+        let clearBtn = document.getElementById('clearBtn');
+
+        clearBtn.style.display = (input.length > 0) ? "block" : "none";
+
+        // ANALYTICS: Track what people search for after 1 second of no typing
+        clearTimeout(searchTimer);
+        if (input.length >= 3) {
+            searchTimer = setTimeout(() => {
+                gtag('event', 'search_perfume', {
+                    'search_term': input
+                });
+            }, 1000);
+        }
+        
+        for (let i = 0; i < items.length; i++) {
+            let text = items[i].innerText.toLowerCase();
+            if (input !== "" && text.includes(input)) {
+                items[i].classList.add('show');
+            } else {
+                items[i].classList.remove('show');
+            }
+        }
+    }
+
+    // 3. Clear Search Function
+    function clearSearch() {
+        document.getElementById('search').value = "";
+        filter();
+        document.getElementById('search').focus();
+    }
+</script>
 
 </body>
 </html>
