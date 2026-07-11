@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale Stock List</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --success-color: #27ae60;
+            --warning-color: #e67e22;
+            --danger-color: #c0392b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eceff1;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .meta-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background-color: #f1f2f6;
+        }
+
+        /* Status Badges */
+        .badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .instock { background-color: #d4edda; color: var(--success-color); }
+        .lowstock { background-color: #fff3cd; color: var(--warning-color); }
+        .outofstock { background-color: #f8d7da; color: var(--danger-color); }
+
+        .price {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                padding: 10px;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:before {
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            /* Label the data for mobile view */
+            td:nth-of-type(1):before { content: "SKU"; }
+            td:nth-of-type(2):before { content: "Product Name"; }
+            td:nth-of-type(3):before { content: "Category"; }
+            td:nth-of-type(4):before { content: "Wholesale Price"; }
+            td:nth-of-type(5):before { content: "MOQ"; }
+            td:nth-of-type(6):before { content: "Stock Qty"; }
+            td:nth-of-type(7):before { content: "Status"; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Wholesale Stock Master List</h1>
+            <p style="margin: 5px 0 0 0; color: #7f8c8d;">Bulk Pricing & Inventory Availability</p>
+        </div>
+        <div class="meta-info">
+            <p><strong>Last Updated:</strong> July 2026</p>
+            <p><strong>Min. Order Value:</strong> $500.00</p>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Wholesale Price</th>
+                <th>MOQ (Units)</th>
+                <th>Stock Qty</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>APP-101</strong></td>
+                <td>Premium Wireless Earbuds v2</td>
+                <td>Electronics</td>
+                <td class="price">$24.50</td>
+                <td>20</td>
+                <td>1,240</td>
+                <td><span class="badge instock">In Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>APP-102</strong></td>
+                <td>Ergonomic Office Chair</td>
+                <td>Furniture</td>
+                <td class="price">$85.00</td>
+                <td>5</td>
+                <td>42</td>
+                <td><span class="badge lowstock">Low Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>APP-103</strong></td>
+                <td>Stainless Steel Water Bottle (1L)</td>
+                <td>Home & Kitchen</td>
+                <td class="price">$6.20</td>
+                <td>50</td>
+                <td>0</td>
+                <td><span class="badge outofstock">Out of Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>APP-104</strong></td>
+                <td>Ultra-Wide Gaming Monitor 34"</td>
+                <td>Electronics</td>
+                <td class="price">$199.00</td>
+                <td>10</td>
+                <td>310</td>
+                <td><span class="badge instock">In Stock</span></td>
+            </tr>
+            <tr>
+                <td><strong>APP-105</strong></td>
+                <td>Organic Cotton Hoodies (Assorted)</td>
+                <td>Apparel</td>
+                <td class="price">$14.10</td>
+                <td>30</td>
+                <td>15</td>
+                <td><span class="badge lowstock">Low Stock</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
